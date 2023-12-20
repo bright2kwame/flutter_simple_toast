@@ -59,152 +59,45 @@ dependencies:
 Import it and use it in your dart code:
 
 ```
-import 'package:simple_toast/timeline_tree.dart';
+import 'package:simple_toast/simple_toast.dart';
 
 ```
 
 ## Usage
 
-Timeline Model list
+Simple Toast
+
+• Show information, you invoke this by calling info toast 
 
 ```dart
-List<TimelinePluginModel> items = [];
+ SimpleToast.showInfoToast();
 ```
-
-Node Arrangements
-
-• Position Node Left 
-```dart
- var rightModel = TimelinePluginModel(
-            isActive: true,
-            position: TimelinePluginViewPosition.right,
-            child: _timelineItemView(element));
-```
-• Position Node Right 
+• Show error message, this presents error message
 
 ```dart
- var rightModel = TimelinePluginModel(
-            isActive: false,
-            position: TimelinePluginViewPosition.left,
-            child: _timelineItemView(element));
+ SimpleToast.showErrorToast();
 ```
+• Show success message, this presents success message
 
-• Add Models to List 
 ```dart
- items.add(rightModel);
- items.add(rightModel);
- ```
-
-TIMELINE TREE
-
-• Create Timeline Tree
-
- ```dart
-TimelinePlugin(
-        items: items,
-        lineWidth: 5,
-        shrinkWrap: true,
-        primary: false,
-        overlapFactor: 0.6,
-        activelineColor: AppResourses.appColors.primaryColor,
-        physics: const NeverScrollableScrollPhysics(),
-      ),
+ SimpleToast.showSuccessToast();
 ```
+
 
 ## Example
 
 • Import the package
 ```dart
  //import the plugin
- import 'package:timeline_tree/timeline_tree.dart';
+ import 'package:simple_toast/simple_toast.dart';
 ```
 
 ```dart
- List<TimelinePluginModel> timelinePluginModels = [];
+  SimpleToast.showInfoToast(context, "Info Title", "Information displayed on info");
 ```
-
-• Extracting and Preparing Data
 ```dart
- List<TimelinePluginModel> items = [];
- //itereating over the list of data
- for (int index = 0; index < responseItems.length; index++) {
-      MissionTimelineItem element = responseItems[index];
-      var positionedRight = index % 2 != 0;
-      var model = TimelinePluginModel(
-            isActive: !element.locked,
-            position: positionedRight ? TimelinePluginViewPosition.right :  
-            TimelinePluginViewPosition.left,
-            child: _timelineItemView(element));
-        items.add(model);
-      
-    //updating the view
-    setState(() {
-      timelinePluginModels = items;
-    });
-  }
+  SimpleToast.showSuccessToast(context, "Success Title", "Information displayed on success");
 ```
-
-• Creating the View
 ```dart
-  Widget _timelineView() {
-    return Container(
-      margin: const EdgeInsets.all(16),
-      child: TimelinePlugin(
-        items: timelinePluginModels,
-        lineWidth: 5,
-        shrinkWrap: true,
-        primary: false,
-        overlapFactor: 0.6,
-        activelineColor: AppResourses.appColors.primaryColor,
-        physics: const NeverScrollableScrollPhysics(),
-      ),
-    );
-  }
-  ```
-
-## Additional information
-
-• Timeline Tree
-
-@items, list of model items to be displayed in the timeline
-@lineWidth, the width of the line in the timeline
-@inactivelineColor, color of the line for inactive region
-@activelineColor, color of the line for active regions
-@overlapFactor, the fraction for which the oncoming view should overlap
-
-```dart
-class TimelinePlugin {
-  final List<TimelinePluginModel> items,
-  final bool primary,
-  final bool shrinkWrap,
-  final ScrollPhysics? physics,
-  final double lineWidth,
-  final Color inactivelineColor,
-  final Color activelineColor,
-  final double overlapFactor
-}
-```
-
-• Timeline Model
-
-@position, is an enum that tells if to position the node to left and right
-@isActive, tells if the that object is active or not. This helps for people who want the timeline have states
-@child, the view to attached to the tree
-
-```dart
-class TimelinePluginModel(
-           final bool isActive,
-           final TimelinePluginViewPosition position,
-           final Widget child)
-```
-
-• Timeline Position Enum
-
-Indicate the position of arrangement
-
-```dart
-enum TimelinePluginViewPosition {
-  left,
-  right
-}
+  SimpleToast.showErrorToast(context, "Error Title", "Information displayed on error");
 ```
