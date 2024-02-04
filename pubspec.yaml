@@ -1,17 +1,16 @@
+
 name: simple_toast_message
 description: A simple way to display messsage within a short time and dismiss it.
 
 homepage: https://github.com/bright2kwame/flutter_simple_toast
 repository: https://github.com/bright2kwame/flutter_simple_toast
 issue_tracker: https://github.com/bright2kwame/flutter_simple_toast/issues
-
-
 version: 0.0.5
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
-
-
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=1.17.0"
+  
 dependencies:
   flutter:
     sdk: flutter
@@ -21,13 +20,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
   flutter_lints: ^3.0.1
 
 
 flutter:
-
-
   uses-material-design: true
 
